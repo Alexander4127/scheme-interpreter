@@ -2,7 +2,7 @@
 
 This project is a simple implementation of a Scheme language interpreter based on C++.
 
-The project supports above 20 functions from language(with "lambda" function) and includes storing variables and functions in addition to "one-string" operations.
+The project supports above 20 functions from language(with `lambda` function) and includes storing variables and functions in addition to "one-string" operations.
 
 It contains three stages of text processing. 
 
@@ -14,4 +14,4 @@ It contains three stages of text processing.
 
 - `Eval` should be shared for all objects - this problem has been solved with inheritance inserting. Some structures cannot be evaluated by `(expression)`, others are not appropriate to print(make string to show the operation result).
 
-- Implementation of `lambda functions` requires work with memory to avoid cycled relationships between Scope and Function. And `memory_control` exists for achieving correct interaction - GarbageCollector memorizes all objects and after each calling Run function it is cleaned up to delete unsaved in `Scope`(-s) and other already useful objects.
+- Implementation of `lambda functions` requires work with memory to avoid cycled relationships between `Scope` and `Function`. And `memory_control` exists for achieving correct interaction - `GarbageCollector` memorizes all objects and after each calling `Run` function it is cleaned up to delete unsaved in `Scope`(-s) and other already useful objects.
