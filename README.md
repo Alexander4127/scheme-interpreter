@@ -25,6 +25,7 @@ Interpreter interpreter;
 
 // std::string Interpreter::Run(const std::string&);
 
+// Some simple operations with integer and boolean expressions
 interpreter.Run("(> 5 4 3 2 1)"); // -> #t
 interpreter.Run("(max 100 -1 0 10 15)"); // -> 100
 interpreter.Run("(/ 100 25 2)"); // -> 2
@@ -32,9 +33,20 @@ interpreter.Run("(/ 100 25 2)"); // -> 2
 interpreter.Run("(and (= 2 2) (> 1 0) 10)"); // -> 10
 interpreter.Run("(and (= 2 2) (> 0 1) 10)"); // -> #f
 
+// List-objects similar to list in C++
 interpreter.Run("'(1 . (2 . (3 . ())))"); // -> (1 2 3) 
 interpreter.Run("(list-ref '(1 2 3 4 5) 2)"); // -> 3
 
+// Recursive functions
 interpreter.Run("(define (fact x) (if (= x 0) 1 (* (fact (- x 1)) x)))");
 interpreter.Run("(fact 5)"); // -> 120
+
+// Scope for lambda functions
+interpreter.Run("(define decl (lambda (x) (lambda () (set! x (+ x 1)) x)))");
+interpreter.Run("(define x 0)");
+interpreter.Run("(define generator (decl x))");
+interpreter.Run("(generator)"); // -> 1
+interpreter.Run("(set! x 100)");
+interpreter.Run("x"); // -> 100
+interpreter.Run("(generator)"); // -> 2
 ```
